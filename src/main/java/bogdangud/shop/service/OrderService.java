@@ -21,12 +21,10 @@ public class OrderService {
     public void createNewOrder(int customerId, Date date, int productId) {
         Product tempProduct = productDao.get(productId);
         Customer tempCustomer = customerDao.get(customerId);
-        Order tempOrder = new Order(tempCustomer, date);
-        orderDao.add(tempOrder);
-        
+        Order tempOrder = orderDao.add(new Order(tempCustomer, date));
+
         OrderItem tempOrderItem =  new OrderItem(tempOrder, tempProduct);
         System.out.println(tempOrderItem.toString());
-
         orderItemDao.add(tempOrderItem);
     }
 

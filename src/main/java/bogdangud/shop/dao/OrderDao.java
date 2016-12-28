@@ -1,5 +1,6 @@
 package bogdangud.shop.dao;
 
+
 import bogdangud.shop.model.Order;
 
 import javax.persistence.EntityManager;
@@ -37,5 +38,8 @@ public class OrderDao {
         TypedQuery<Order> namedQuery = em.createNamedQuery("Order.getAll", Order.class);
         return namedQuery.getResultList();
     }
-    
+
+//    public void getsmt() {
+//        em.;
+//    }
 }
