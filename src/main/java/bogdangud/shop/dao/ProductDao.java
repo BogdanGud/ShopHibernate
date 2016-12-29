@@ -21,7 +21,7 @@ public class ProductDao {
         return em.find(Product.class, id);
     }
 
-    public void delete (int id) {
+    public void delete(int id) {
         em.getTransaction().begin();
         em.remove(get(id));
         em.getTransaction().commit();

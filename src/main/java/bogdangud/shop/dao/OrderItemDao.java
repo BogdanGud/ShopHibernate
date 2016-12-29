@@ -23,7 +23,7 @@ public class OrderItemDao {
         return namedQuery.getResultList();
     }
 
-    public OrderItem get(int id){
+    public OrderItem get(int id) {
         return em.find(OrderItem.class, id);
     }
 
@@ -33,7 +33,7 @@ public class OrderItemDao {
         em.getTransaction().commit();
     }
 
-    public void delete (int id) {
+    public void delete(int id) {
         em.getTransaction().begin();
         em.remove(get(id));
         em.getTransaction().commit();

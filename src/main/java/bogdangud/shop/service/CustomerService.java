@@ -6,14 +6,14 @@ import bogdangud.shop.model.Customer;
 import java.util.List;
 
 public class CustomerService {
-    private CustomerDao customerDao =  new CustomerDao();
+    private CustomerDao customerDao = new CustomerDao();
 
     public void create(Customer newCustomer) {
         customerDao.add(newCustomer);
     }
 
     public Customer get(int id) {
-         return customerDao.get(id);
+        return customerDao.get(id);
     }
 
     public void delete(int id) {

@@ -22,7 +22,7 @@ public class OrderDao {
         return em.find(Order.class, id);
     }
 
-    public void delete (int id) {
+    public void delete(int id) {
         em.getTransaction().begin();
         em.remove(get(id));
         em.getTransaction().commit();
@@ -39,7 +39,4 @@ public class OrderDao {
         return namedQuery.getResultList();
     }
 
-//    public void getsmt() {
-//        em.;
-//    }
 }

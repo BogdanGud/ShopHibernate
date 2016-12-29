@@ -21,7 +21,7 @@ public class CustomerDao {
         return em.find(Customer.class, id);
     }
 
-    public void delete (int id) {
+    public void delete(int id) {
         em.getTransaction().begin();
         em.remove(get(id));
         em.getTransaction().commit();
@@ -37,6 +37,4 @@ public class CustomerDao {
         TypedQuery<Customer> namedQuery = em.createNamedQuery("Customer.getAll", Customer.class);
         return namedQuery.getResultList();
     }
-
-
 }

@@ -20,8 +20,8 @@ public class OrderItem {
     private Order order;
 
 
-   @ManyToOne
-   @JoinColumn(name = "product_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
     public OrderItem() {
@@ -47,5 +47,26 @@ public class OrderItem {
                 ", order=" + order +
                 ", product=" + product +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        OrderItem orderItem = (OrderItem) o;
+
+        if (!id.equals(orderItem.id)) return false;
+        if (!order.equals(orderItem.order)) return false;
+        return product.equals(orderItem.product);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + order.hashCode();
+        result = 31 * result + product.hashCode();
+        return result;
     }
 }

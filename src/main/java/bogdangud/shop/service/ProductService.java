@@ -8,8 +8,8 @@ import java.util.List;
 public class ProductService {
     private ProductDao productDao = new ProductDao();
 
-    public void create(Product newProduct) {
-        productDao.add(newProduct);
+    public Product create(Product newProduct) {
+        return productDao.add(newProduct);
     }
 
     public Product get(int id) {
