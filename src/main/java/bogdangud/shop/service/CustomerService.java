@@ -28,5 +28,4 @@ public class CustomerService {
         return customerDao.getAll();
     }
 
-
 }

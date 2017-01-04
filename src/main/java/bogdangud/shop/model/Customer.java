@@ -87,7 +87,6 @@ public class Customer {
         if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
         if (phone != null ? !phone.equals(customer.phone) : customer.phone != null) return false;
         return address != null ? address.equals(customer.address) : customer.address == null;
-
     }
 
     @Override

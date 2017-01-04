@@ -18,18 +18,18 @@ public class Product {
     @Column(name = "price")
     private Double price;
 
-    private Set<Order> orders = new HashSet<>();
-    @ManyToMany
-    @JoinTable(name = "order_item",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
+    @ManyToMany()
+    @JoinTable(name = "order_product",
+            joinColumns = {@JoinColumn(name = "product_id")},
+            inverseJoinColumns = {@JoinColumn(name = "order_id")})
+    private Set<Booking> bookings = new HashSet<>();
 
-    public Set<Order> getOrders() {
-        return orders;
+    public Set<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     public Product() {

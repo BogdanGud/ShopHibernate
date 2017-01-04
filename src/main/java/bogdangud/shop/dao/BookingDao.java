@@ -1,25 +1,25 @@
 package bogdangud.shop.dao;
 
 
-import bogdangud.shop.model.Order;
+import bogdangud.shop.model.Booking;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class OrderDao {
+public class BookingDao {
     private EntityManager em = Persistence.createEntityManagerFactory("SHOP").createEntityManager();
 
-    public Order add(Order newOrder) {
+    public Booking add(Booking newBooking) {
         em.getTransaction().begin();
-        Order orderFromDB = em.merge(newOrder);
+        Booking bookingFromDB = em.merge(newBooking);
         em.getTransaction().commit();
-        return orderFromDB;
+        return bookingFromDB;
     }
 
-    public Order get(int id) {
-        return em.find(Order.class, id);
+    public Booking get(int id) {
+        return em.find(Booking.class, id);
     }
 
     public void delete(int id) {
@@ -28,14 +28,14 @@ public class OrderDao {
         em.getTransaction().commit();
     }
 
-    public void update(Order order) {
+    public void update(Booking booking) {
         em.getTransaction().begin();
-        em.merge(order);
+        em.merge(booking);
         em.getTransaction().commit();
     }
 
-    public List<Order> getAll() {
-        TypedQuery<Order> namedQuery = em.createNamedQuery("Order.getAll", Order.class);
+    public List<Booking> getAll() {
+        TypedQuery<Booking> namedQuery = em.createNamedQuery("Order.getAll", Booking.class);
         return namedQuery.getResultList();
     }
 

@@ -5,10 +5,8 @@ import java.util.*;
 
 @Entity
 @Table(name = "booking")
-@NamedQuery(name = "Order.getAll", query = "select o from Order o")
-public class Order {
-
-
+@NamedQuery(name = "Order.getAll", query = "select o from Booking o")
+public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +17,12 @@ public class Order {
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 
-    private Set<Product> products = new HashSet<>();
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "order_item",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @JoinTable(name = "order_product",
+            joinColumns = {@JoinColumn(name = "order_id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id")})
+    private Set<Product> products = new HashSet<>();
+
     public Set<Product> getProducts() {
         return products;
     }
@@ -37,12 +36,13 @@ public class Order {
     }
 
     @Column(name = "date")
+
     private Date date;
 
-    public Order() {
+    public Booking() {
     }
 
-    public Order(Customer customer, Date date) {
+    public Booking(Customer customer, Date date) {
         this.customer = customer;
         this.date = date;
     }
@@ -69,9 +69,10 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "Booking{" +
                 "id=" + id +
                 ", customer=" + customer +
+                ", products=" + products +
                 ", date=" + date +
                 '}';
     }
@@ -81,11 +82,11 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Order order = (Order) o;
+        Booking booking = (Booking) o;
 
-        if (!id.equals(order.id)) return false;
-        if (customer != null ? !customer.equals(order.customer) : order.customer != null) return false;
-        return date != null ? date.equals(order.date) : order.date == null;
+        if (!id.equals(booking.id)) return false;
+        if (customer != null ? !customer.equals(booking.customer) : booking.customer != null) return false;
+        return date != null ? date.equals(booking.date) : booking.date == null;
 
     }
 

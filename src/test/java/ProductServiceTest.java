@@ -6,7 +6,6 @@ import org.junit.Test;
 
 
 public class ProductServiceTest {
-
     ProductService productService = new ProductService();
 
     @Test
@@ -28,6 +27,4 @@ public class ProductServiceTest {
         Assert.assertEquals(1200, productService.get(fromDB.getId()).getPrice(), 0.1);
 
     }
-
-
 }
