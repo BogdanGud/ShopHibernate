@@ -1,6 +1,7 @@
 import bogdangud.shop.model.Product;
 import bogdangud.shop.service.ProductService;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -9,6 +10,7 @@ public class ProductServiceTest {
     ProductService productService = new ProductService();
 
     @Test
+    @Ignore
     public void testCreateGetProduct() {
         Product newProduct = new Product("testCreate", 1000d);
         Product fromDB = productService.create(newProduct);
@@ -17,6 +19,7 @@ public class ProductServiceTest {
     }
 
     @Test
+    @Ignore
     public void testUpdate() {
         Product newProduct = new Product("someText", 1200d);
         Product fromDB = productService.create(newProduct);

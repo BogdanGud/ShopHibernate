@@ -1,6 +1,8 @@
 package bogdangud.shop.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "product")
@@ -15,6 +17,20 @@ public class Product {
     private String name;
     @Column(name = "price")
     private Double price;
+
+    private Set<Order> orders = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "order_item",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_id"))
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 
     public Product() {
     }
