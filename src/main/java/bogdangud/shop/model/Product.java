@@ -1,6 +1,7 @@
 package bogdangud.shop.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class Product {
     @Column(name = "name")
     private String name;
     @Column(name = "price")
-    private Double price;
+    private BigDecimal price;
 
     @ManyToMany()
     @JoinTable(name = "order_product",
@@ -35,7 +36,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, Double price) {
+    public Product(String name, BigDecimal price) {
         this.name = name;
         this.price = price;
     }
@@ -56,21 +57,19 @@ public class Product {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return "Product: " + id  +
+                ", Name: " + name  +
+                ", Price: $" + price + '\n';
     }
 
     @Override
